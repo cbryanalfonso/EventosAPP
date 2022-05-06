@@ -7,12 +7,13 @@ interface Props {
   style: string;
   icon?: boolean;
   addStyle?: any;
-  onPress?: (numeroTexto: string) => void;
+  onPress?: () => void;
 }
 
 export const Button = ({Texto, style, onPress, icon, addStyle}: Props) => {
   return (
     <TouchableOpacity
+    onPress={onPress}
       style={[getButtonStyle(style) as any, addStyle ? addStyle : null]}>
       <Text style={[getTextStyle(style) as any]}>{Texto}</Text>
     </TouchableOpacity>
