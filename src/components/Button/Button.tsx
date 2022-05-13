@@ -70,6 +70,7 @@ const getTextStyle = (color: any) => {
       return {
         color: '#4F4F4F',
         fontSize: 18,
+        textDecorationLine: 'underline'
       };
     case 'btnTransparenteRojo':
       return {
