@@ -8,14 +8,15 @@ interface Props {
   icon?: boolean;
   addStyle?: any;
   onPress?: () => void;
+  addTextStyle?:any;
 }
 
-export const Button = ({Texto, style, onPress, icon, addStyle}: Props) => {
+export const Button = ({Texto, style, onPress, icon, addStyle, addTextStyle}: Props) => {
   return (
     <TouchableOpacity
       onPress={onPress}
       style={[getButtonStyle(style) as any, addStyle ? addStyle : null]}>
-      <Text style={[getTextStyle(style) as any]}>{Texto}</Text>
+      <Text style={[getTextStyle(style) as any, addTextStyle ? addTextStyle: null]}>{Texto}</Text>
     </TouchableOpacity>
   );
 };
