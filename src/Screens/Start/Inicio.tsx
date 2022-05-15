@@ -6,9 +6,14 @@ import {
   heightPercentageToDP as hp,
 } from 'react-native-responsive-screen';
 import {Button} from '../../components/Button/Button';
+import { useNavigation } from '@react-navigation/native';
+import { NativeStackNavigationProp } from '@react-navigation/native-stack';
+import { RootStackParamList } from '../../Hooks/Firebase/exportNavigations';
+
+type logScreen = NativeStackNavigationProp<RootStackParamList, 'LogandRegister'>
 
 export const Inicio = () => {
-
+ const navigation = useNavigation<logScreen>()
  const [ventana, setVentana] = useState(false)
  const [ventana2, setVentana2] = useState(false)
  const [ventana3, setVentana3] = useState(false)
@@ -139,7 +144,7 @@ export const Inicio = () => {
             <View style={styles.circle} />
           </View>
           <View style={styles.footer}>
-            <Button Texto="Next" style="btnRojo"  />
+            <Button Texto="Next" style="btnRojo" onPress={() =>  navigation.navigate('LogandRegister') }   /> 
           </View>
         </SafeAreaView>
       );

@@ -1,3 +1,5 @@
+import { useNavigation } from '@react-navigation/native';
+import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import React from 'react';
 import {
   Image,
@@ -13,11 +15,16 @@ import {
   heightPercentageToDP as hp,
 } from 'react-native-responsive-screen';
 import {Button} from '../../components/Button/Button';
+import { RootStackParamList } from '../../Hooks/Firebase/exportNavigations';
+
+type signUp = NativeStackNavigationProp<RootStackParamList>
 
 export const LogandRegScreen = () => {
+  
+ const navigation = useNavigation<signUp>()
   return (
     <>
-      <StatusBar backgroundColor={'black'} barStyle="dark-content" />
+     {/*  <StatusBar backgroundColor={'black'} barStyle="dark-content" /> */}
       <SafeAreaView style={styles.container}>
         <ImageBackground
           source={require('../../assets/img/fondo.png')}
@@ -40,9 +47,11 @@ export const LogandRegScreen = () => {
                 style="btnRojo"
                 Texto="Sign Up"
                 addStyle={styles.addStyleBtn}
+                onPress={()=> navigation.navigate('RegisterScreen')}
               />
               <Button style="btnTransparenteRojo" Texto="Log in" 
                addStyle={[styles.addStyleBtn, {marginBottom: 0}]}
+               onPress={()=>navigation.navigate('LoginScreen')}
                />
             </View>
           </View>
