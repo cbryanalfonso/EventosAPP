@@ -1330,6 +1330,11 @@
     opencollective-postinstall "^2.0.1"
     superstruct "^0.6.2"
 
+"@react-native-firebase/auth@^14.9.4":
+  version "14.9.4"
+  resolved "https://registry.yarnpkg.com/@react-native-firebase/auth/-/auth-14.9.4.tgz#61919ce4267acd73ae6af5510a6766a09057670d"
+  integrity sha512-F/ugzDM6digmdQ5qXqMgbkNgbTJRhgaQZz/9eNATvVRfJTpMQs1fTh+hox4UbdUJdy6ZAU2o4ZCfTgiOHfHItQ==
+
 "@react-native-picker/picker@^1.8.3":
   version "1.16.8"
   resolved "https://registry.yarnpkg.com/@react-native-picker/picker/-/picker-1.16.8.tgz#2126ca54d4a5a3e9ea5e3f39ad1e6643f8e4b3d4"
