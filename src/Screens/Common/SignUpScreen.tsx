@@ -9,6 +9,7 @@ import PhoneInput from 'react-native-phone-number-input';
 import RNPickerSelect from 'react-native-picker-select';
 import {Button} from '../../components/Button/Button';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
+import { useSingnUpScreen } from '../../Hooks/Common/useSingnUpScreen';
 
 const correos = [
   {label: '@hotmail.com', value: '@hotmail.com'},
@@ -18,7 +19,11 @@ const correos = [
 ];
 
 const SignUpScreen = () => {
-  const phoneInput = useRef<PhoneInput>(null);
+  const {
+    phoneInput,
+    saveUser
+
+  } = useSingnUpScreen();
   return (
     <SafeAreaView style={styles.container}>
          <KeyboardAwareScrollView>
@@ -52,7 +57,7 @@ const SignUpScreen = () => {
               arroba: '',
               password: '',
             }}
-            onSubmit={values => console.log(values)}>
+            onSubmit={values => saveUser(values)}>
             {({handleChange, handleBlur, handleSubmit, values}) => (
               <View>
                 <View style={styles.rowInput}>
@@ -87,12 +92,13 @@ const SignUpScreen = () => {
                   ]}>
                   <TextInputUI
                     placeholder="Email"
-                    onChangeText={handleChange('name')}
-                    value={values.name}
+                    onChangeText={handleChange('email')}
+                    value={values.email}
                     addStyle={{width: wp(60)}}
                   />
                   <RNPickerSelect
-                    onValueChange={value => console.log(value)}
+                  
+                    onValueChange={value => values.arroba = value }
                     items={correos}
                     placeholder={{
                       label: '@gmail.com',
@@ -129,6 +135,7 @@ const SignUpScreen = () => {
                   Texto="Sign Up"
                   style="btnRojo"
                   addStyle={{width: wp(90), marginTop: wp(7)}}
+                  onPress={handleSubmit}
                 />
                 <TextUi
                   color="txtNormal"
