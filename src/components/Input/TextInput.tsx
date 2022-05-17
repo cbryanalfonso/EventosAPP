@@ -41,7 +41,7 @@ const TextInputUI = ({
         style={[
           {
             borderBottomWidth: wp(0.1),
-            borderColor:'#BDBDBD'
+            borderColor:'#BDBDBD',
           },
           addStyle ? addStyle : null,
         ]}
