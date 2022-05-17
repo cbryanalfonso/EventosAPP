@@ -8,6 +8,7 @@ import { Inicio } from './Start/Inicio';
 import { LogandRegScreen } from './Start/LogandRegScreen';
 import { RootStackParamList } from '../Hooks/Firebase/exportNavigations';
 import LoginScreen from './Common/LoginScreen';
+import { AppBottomNavigator } from './AppBottomNavigator';
 
 export const AppNavigator = () => {
 
@@ -21,6 +22,7 @@ export const AppNavigator = () => {
 
     const stackAuth = () =>(
         <MainStackAuth.Navigator>
+            <MainStackAuth.Screen name="AppBottom" component={AppBottomNavigator} options={{headerShown: false}} />
             <MainStackAuth.Screen name='HomeEvents' component={HomeEventsScreen} />
         </MainStackAuth.Navigator>
     )
