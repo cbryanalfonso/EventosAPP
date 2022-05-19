@@ -1,9 +1,10 @@
-import { useNavigation } from '@react-navigation/native';
-import { NativeStackNavigationProp } from '@react-navigation/native-stack';
+import {useNavigation} from '@react-navigation/native';
+import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import React from 'react';
 import {
   Image,
   ImageBackground,
+  Platform,
   SafeAreaView,
   StatusBar,
   StyleSheet,
@@ -15,17 +16,16 @@ import {
   heightPercentageToDP as hp,
 } from 'react-native-responsive-screen';
 import {Button} from '../../components/Button/Button';
-import { RootStackParamList } from '../../Hooks/Firebase/exportNavigations';
+import {RootStackParamList} from '../../Hooks/Firebase/exportNavigations';
 
-type signUp = NativeStackNavigationProp<RootStackParamList>
+type signUp = NativeStackNavigationProp<RootStackParamList>;
 
 export const LogandRegScreen = () => {
-  
- const navigation = useNavigation<signUp>()
+  const navigation = useNavigation<signUp>();
   return (
     <>
-     {/*  <StatusBar backgroundColor={'black'} barStyle="dark-content" /> */}
-      <SafeAreaView style={styles.container}>
+    <StatusBar barStyle={'light-content'} backgroundColor={'black'}  />
+    <View style={styles.container}> 
         <ImageBackground
           source={require('../../assets/img/fondo.png')}
           style={{width: wp(100), height: hp(100)}}>
@@ -47,16 +47,18 @@ export const LogandRegScreen = () => {
                 style="btnRojo"
                 Texto="Sign Up"
                 addStyle={styles.addStyleBtn}
-                onPress={()=> navigation.navigate('RegisterScreen')}
+                onPress={() => navigation.navigate('RegisterScreen')}
               />
-              <Button style="btnTransparenteRojo" Texto="Log in" 
-               addStyle={[styles.addStyleBtn, {marginBottom: 0}]}
-               onPress={()=>navigation.navigate('LoginScreen')}
-               />
+              <Button
+                style="btnTransparenteRojo"
+                Texto="Log in"
+                addStyle={[styles.addStyleBtn, {marginBottom: 0}]}
+                onPress={() => navigation.navigate('LoginScreen')}
+              />
             </View>
           </View>
         </ImageBackground>
-      </SafeAreaView>
+      </View>
     </>
   );
 };
