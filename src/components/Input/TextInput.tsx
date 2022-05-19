@@ -30,7 +30,7 @@ const TextInputUI = ({
     <TextUi
          color="txtNormal"
          texto={placeholder}
-         addStyle={{marginTop: wp(3), color:'#363636', fontSize: wp(3.5), marginBottom: wp(0.1)}}
+         addStyle={{marginTop: wp(3), color:'#363636', fontSize: wp(3.5), marginBottom: wp(1)}}
     />
       <TextInput
         placeholder={placeholder}
@@ -42,6 +42,7 @@ const TextInputUI = ({
           {
             borderBottomWidth: wp(0.1),
             borderColor:'#BDBDBD',
+            marginTop: wp(2)
           },
           addStyle ? addStyle : null,
         ]}
