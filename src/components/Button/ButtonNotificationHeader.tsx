@@ -1,4 +1,5 @@
-import { Icon } from '@rneui/themed'
+
+import  Icon  from 'react-native-vector-icons/FontAwesome';
 import React from 'react'
 import { TouchableOpacity } from 'react-native'
 import { widthPercentageToDP as wp } from 'react-native-responsive-screen';
@@ -9,7 +10,6 @@ export const ButtonNotificationHeader = () => {
       <Icon
         //raised
         name='bell'
-        type='font-awesome'
         color='#363636'
          />
    </TouchableOpacity>
