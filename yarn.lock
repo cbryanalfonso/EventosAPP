@@ -1415,10 +1415,9 @@
   dependencies:
     nanoid "^3.1.23"
 
-"@rneui/base@^4.0.0-rc.3":
+"@rneui/base-edge@github:react-native-elements/react-native-elements#base":
   version "4.0.0-rc.3"
-  resolved "https://registry.yarnpkg.com/@rneui/base/-/base-4.0.0-rc.3.tgz#b3ffb4f369ac0917ea1c7ae42011aaec1acb7fcf"
-  integrity sha512-FYMIg7UGrVGzP+cC5Yo7rsRyB6qNKa9QSGUAhxnmZ+PDjwYXWamtRRQfx/Lr2UtRMbcU3r5NQMOyEXmUip9JGw==
+  resolved "https://codeload.github.com/react-native-elements/react-native-elements/tar.gz/fd2be62c361142b88925b7df49db0116f78337ee"
   dependencies:
     "@types/react-native-vector-icons" "^6.4.10"
     color "^3.2.1"
@@ -1427,10 +1426,23 @@
     react-native-ratings "^8.1.0"
     react-native-size-matters "^0.4.0"
 
-"@rneui/themed@^4.0.0-rc.3":
+"@rneui/base@^0.0.0-edge.2":
+  version "0.0.0-edge.2"
+  resolved "https://registry.yarnpkg.com/@rneui/base/-/base-0.0.0-edge.2.tgz#ff251ac010c71e9e5b917273fa69401e16b0a9ad"
+  integrity sha512-MFyiK0Kz23v5mwOUotZdD8cudREa0t9lFwb2+6MyyG1SN2I8CUyqqsZBBwUMInXbspeOtJGtWOPv61TM/2esFQ==
+  dependencies:
+    "@rneui/base-edge" "github:react-native-elements/react-native-elements#base"
+
+"@rneui/themed-edge@github:react-native-elements/react-native-elements#themed":
   version "4.0.0-rc.3"
-  resolved "https://registry.yarnpkg.com/@rneui/themed/-/themed-4.0.0-rc.3.tgz#96e7d97231dd83d6b2563234b3a36a15a6491595"
-  integrity sha512-f+XQiYu0YODKzyZG2azhesr6o0/rdUDX2DCsKQ6amNsl9Xwwq0+N3UgCUmAFYnIUttbgQN9bh7eEiaY6Hna+4g==
+  resolved "https://codeload.github.com/react-native-elements/react-native-elements/tar.gz/d69db6a183bfaf2253e42d586f2d26432a8a4ad8"
+
+"@rneui/themed@^0.0.0-edge.2":
+  version "0.0.0-edge.2"
+  resolved "https://registry.yarnpkg.com/@rneui/themed/-/themed-0.0.0-edge.2.tgz#a9cdc4501e5d046f7c6f886a8f6e0824af0f731d"
+  integrity sha512-MnsZarge+2V1//ov9jCAxkKzjS5RejZf/eRpE9tVOmvDZeEO1Q/9LIV00ZJxEHnjJHpozs5UvBkwb8KAwFL/0Q==
+  dependencies:
+    "@rneui/themed-edge" "github:react-native-elements/react-native-elements#themed"
 
 "@sideway/address@^4.1.3":
   version "4.1.4"
