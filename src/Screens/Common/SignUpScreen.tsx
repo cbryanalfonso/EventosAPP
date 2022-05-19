@@ -1,16 +1,29 @@
 import React, {useRef} from 'react';
-import {Platform, SafeAreaView, StyleSheet, Text, View} from 'react-native';
+import {
+  Platform,
+  SafeAreaView,
+  StatusBar,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+} from 'react-native';
 import {widthPercentageToDP as wp} from 'react-native-responsive-screen';
 import {TextUi} from '../../components/Text/TextUi';
-import {Icon} from '@rneui/themed';
 import TextInputUI from '../../components/Input/TextInput';
 import {Formik} from 'formik';
 import PhoneInput from 'react-native-phone-number-input';
 import RNPickerSelect from 'react-native-picker-select';
 import {Button} from '../../components/Button/Button';
-import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
-import { useSingnUpScreen } from '../../Hooks/Common/useSingnUpScreen';
+import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
+import {useSingnUpScreen} from '../../Hooks/Common/useSingnUpScreen';
+import Icon from 'react-native-vector-icons/FontAwesome';
+import {NativeStackNavigationProp} from '@react-navigation/native-stack';
+import {RootStackParamList} from '../../Hooks/Firebase/exportNavigations';
+import {useNavigation} from '@react-navigation/native';
+Icon.loadFont();
 
+type signUp = NativeStackNavigationProp<RootStackParamList>;
 const correos = [
   {label: '@hotmail.com', value: '@hotmail.com'},
   {label: '@outlook.com', value: '@outlook.com'},
@@ -19,169 +32,171 @@ const correos = [
 ];
 
 const SignUpScreen = () => {
-  const {
-    phoneInput,
-    saveUser
+  const {phoneInput, saveUser} = useSingnUpScreen();
 
-  } = useSingnUpScreen();
+  const navigation = useNavigation<signUp>();
   return (
     <SafeAreaView style={styles.container}>
-         <KeyboardAwareScrollView>
-      <View style={styles.backContainer}>
-        <Icon
-          raised
-          name="chevron-left"
-          type="font-awesome"
-          color="#4F4F4F"
-          size={wp(4.3)}
-          onPress={() => console.log('hello')}
-        />
-        <TextUi color="txtNormal" texto=" Back" />
-      </View>
-     
-      <View style={styles.bodyContainer}>
-        <TextUi color="txtBoldTitle" texto="Sign Up" />
-        <TextUi
-          color="txtNormal"
-          texto="Hi, please fill the information to complete the sign up."
-          addStyle={{marginTop: wp(3)}}
-        />
 
-        <View>
-          <Formik
-            initialValues={{
-              name: '',
-              lastName: '',
-              phoneNumber: '',
-              email: '',
-              arroba: '',
-              password: '',
-            }}
-            onSubmit={values => saveUser(values)}>
-            {({handleChange, handleBlur, handleSubmit, values}) => (
-              <View>
-                <View style={styles.rowInput}>
+   <StatusBar barStyle={'dark-content'} backgroundColor={'white'} />
+      <KeyboardAwareScrollView
+        contentContainerStyle={{flex: 1, padding: wp(2)}}>
+        <View style={styles.backContainer}>
+          <TouchableOpacity style={styles.btnIconos} onPress={()=>navigation.goBack()} >
+            <Icon name="chevron-left" color="#4F4F4F" size={wp(4.3)} />
+          </TouchableOpacity>
+          <TextUi
+            color="txtNormal"
+            texto="    Back"
+            addStyle={{fontWeight: 'bold'}}
+          />
+        </View>
+
+        <View style={styles.bodyContainer}>
+          <TextUi color="txtBoldTitle" texto="Sign Up" />
+          <TextUi
+            color="txtNormal"
+            texto="Hi, please fill the information to complete the sign up."
+            addStyle={{marginTop: wp(3)}}
+          />
+
+          <View>
+            <Formik
+              initialValues={{
+                name: '',
+                lastName: '',
+                phoneNumber: '',
+                email: '',
+                arroba: '',
+                password: '',
+              }}
+              onSubmit={values => saveUser(values)}>
+              {({handleChange, handleBlur, handleSubmit, values}) => (
+                <View>
+                  <View style={styles.rowInput}>
+                    <TextInputUI
+                      placeholder="First Name"
+                      onChangeText={handleChange('name')}
+                      value={values.name}
+                      addStyle={{width: wp(40)}}
+                    />
+                    <TextInputUI
+                      placeholder="Last Name"
+                      onChangeText={handleChange('lastName')}
+                      value={values.lastName}
+                      addStyle={{width: wp(40)}}
+                    />
+                  </View>
+                  <PhoneInput
+                    ref={phoneInput}
+                    defaultValue={values.phoneNumber}
+                    defaultCode="MX"
+                    layout="first"
+                    onChangeText={handleChange('phoneNumber')}
+                    // withShadow
+                    //autoFocus
+                    containerStyle={styles.containerPhone}
+                    textContainerStyle={{backgroundColor: 'white'}}
+                  />
+                  <View
+                    style={[
+                      styles.rowInput,
+                      {justifyContent: 'center', alignItems: 'center'},
+                    ]}>
+                    <TextInputUI
+                      placeholder="Email"
+                      onChangeText={handleChange('email')}
+                      value={values.email}
+                      addStyle={{width: wp(60)}}
+                    />
+                    <RNPickerSelect
+                      onValueChange={value => (values.arroba = value)}
+                      items={correos}
+                      placeholder={{
+                        label: '@gmail.com',
+                        value: '@gmail.com',
+                      }}
+                      useNativeAndroidPickerStyle={false}
+                      style={customPickerStyles}
+                    />
+                  </View>
                   <TextInputUI
-                    placeholder="First Name"
-                    onChangeText={handleChange('name')}
-                    value={values.name}
-                    addStyle={{width: wp(40)}}
+                    placeholder="Password"
+                    onChangeText={handleChange('password')}
+                    value={values.password}
+                    addStyle={{width: wp(90)}}
+                    security={true}
                   />
-                  <TextInputUI
-                    placeholder="Last Name"
-                    onChangeText={handleChange('lastName')}
-                    value={values.lastName}
-                    addStyle={{width: wp(40)}}
+                  <View style={{flexDirection: 'row'}}>
+                    <TextUi
+                      color="txtNormal"
+                      texto="By accepting the following "
+                      addStyle={{marginTop: wp(3), fontSize: wp(3.6)}}
+                    />
+                    <TextUi
+                      color="txtBold"
+                      texto="Terms & Conditions"
+                      addStyle={{
+                        marginTop: wp(3),
+                        fontSize: wp(3.6),
+                        color: '#E8505B',
+                      }}
+                    />
+                  </View>
+                  <Button
+                    Texto="Sign Up"
+                    style="btnRojo"
+                    addStyle={{width: wp(90), marginTop: wp(7)}}
+                    onPress={handleSubmit}
                   />
-                </View>
-                <PhoneInput
-                  ref={phoneInput}
-                  defaultValue={values.phoneNumber}
-                  defaultCode="MX"
-                  layout="first"
-                  onChangeText={handleChange('phoneNumber')}
-                  // withShadow
-                  //autoFocus
-                  containerStyle={styles.containerPhone}
-                  textContainerStyle={{backgroundColor: 'white'}}
-                />
-                <View
-                  style={[
-                    styles.rowInput,
-                    {justifyContent: 'center', alignItems: 'center'},
-                  ]}>
-                  <TextInputUI
-                    placeholder="Email"
-                    onChangeText={handleChange('email')}
-                    value={values.email}
-                    addStyle={{width: wp(60)}}
-                  />
-                  <RNPickerSelect
-                  
-                    onValueChange={value => values.arroba = value }
-                    items={correos}
-                    placeholder={{
-                      label: '@gmail.com',
-                      value: '@gmail.com',
-                    }}
-                    useNativeAndroidPickerStyle={false}
-                    style={customPickerStyles}
-                  />
-                </View>
-                <TextInputUI
-                  placeholder="Password"
-                  onChangeText={handleChange('password')}
-                  value={values.password}
-                  addStyle={{width: wp(90)}}
-                  security={true}
-                />
-                <View style={{flexDirection: 'row'}}>
                   <TextUi
                     color="txtNormal"
-                    texto="By accepting the following "
-                    addStyle={{marginTop: wp(3), fontSize: wp(3.6)}}
+                    texto="or "
+                    addStyle={{marginTop: wp(3), textAlign: 'center'}}
                   />
-                  <TextUi
-                    color="txtBold"
-                    texto="Terms & Conditions"
-                    addStyle={{
+                  <View
+                    style={{
+                      flexDirection: 'row',
                       marginTop: wp(3),
-                      fontSize: wp(3.6),
-                      color: '#E8505B',
-                    }}
-                  />
+                      justifyContent: 'space-around',
+                      width: wp(60),
+                      alignSelf: 'center',
+                    }}>
+                    <TouchableOpacity style={styles.btnIconos}>
+                      <Icon
+                        name="facebook"
+                        color="#4F4F4F"
+                        size={wp(6)}
+                        onPress={() => console.log('hello')}
+                      />
+                    </TouchableOpacity>
+
+                    <TouchableOpacity style={styles.btnIconos}>
+                      <Icon
+                        //raised
+                        name="google"
+                        color="#4F4F4F"
+                        size={wp(6)}
+                        onPress={() => console.log('hello')}
+                      />
+                    </TouchableOpacity>
+                    {Platform.OS == 'ios' ? (
+                      <TouchableOpacity style={styles.btnIconos}>
+                        <Icon
+                          // raised
+                          name="apple"
+                          color="#4F4F4F"
+                          size={wp(6)}
+                          onPress={() => console.log('hello')}
+                        />
+                      </TouchableOpacity>
+                    ) : null}
+                  </View>
                 </View>
-                <Button
-                  Texto="Sign Up"
-                  style="btnRojo"
-                  addStyle={{width: wp(90), marginTop: wp(7)}}
-                  onPress={handleSubmit}
-                />
-                <TextUi
-                  color="txtNormal"
-                  texto="or "
-                  addStyle={{marginTop: wp(3), textAlign: 'center'}}
-                />
-                <View
-                  style={{
-                    flexDirection: 'row',
-                    marginTop: wp(3),
-                    justifyContent: 'space-around',
-                    width: wp(60),
-                    alignSelf: 'center',
-                  }}>
-                  <Icon
-                    raised
-                    name="facebook"
-                    type="font-awesome"
-                    color="#4F4F4F"
-                    size={wp(6)}
-                    onPress={() => console.log('hello')}
-                  />
-                  <Icon
-                    raised
-                    name="google"
-                    type="font-awesome"
-                    color="#4F4F4F"
-                    size={wp(6)}
-                    onPress={() => console.log('hello')}
-                  />
-                  {Platform.OS == 'ios' ? (
-                    <Icon
-                      raised
-                      name="apple"
-                      type="font-awesome"
-                      color="#4F4F4F"
-                      size={wp(6)}
-                      onPress={() => console.log('hello')}
-                    />
-                  ) : null}
-                </View>
-              </View>
-            )}
-          </Formik>
+              )}
+            </Formik>
+          </View>
         </View>
-      </View>
       </KeyboardAwareScrollView>
     </SafeAreaView>
   );
@@ -200,7 +215,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
   },
   bodyContainer: {
-    flex: 9,
+    flex: 10,
     paddingHorizontal: wp(2),
   },
   containerPhone: {
@@ -215,6 +230,23 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-around',
     marginTop: wp(3),
+  },
+  btnIconos: {
+    width: wp(12),
+    height: wp(12),
+    backgroundColor: 'white',
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderRadius: wp(6),
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 1,
+    },
+    shadowOpacity: 0.2,
+    shadowRadius: 1.41,
+
+    elevation: 2,
   },
 });
 
