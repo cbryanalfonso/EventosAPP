@@ -34,6 +34,11 @@ const getTextStyle = (color: any) => {
             color:'#4F4F4F',
             fontSize: wp(4.2),
         }
+    case 'txtViewEvents':
+      return{
+        color:'#E7515B',
+        fontSize: wp(4.2),
+      }
     default:
       return {
         color: '#FFFFFF',
