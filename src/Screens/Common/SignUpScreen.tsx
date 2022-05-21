@@ -25,6 +25,7 @@ Icon.loadFont();
 
 type signUp = NativeStackNavigationProp<RootStackParamList>;
 const correos = [
+  {label: '@gmail.com', value: '@gmail.com'},
   {label: '@hotmail.com', value: '@hotmail.com'},
   {label: '@outlook.com', value: '@outlook.com'},
   {label: '@yahoo.com', value: '@yahoo.com'},
@@ -108,6 +109,7 @@ const SignUpScreen = () => {
                       onChangeText={handleChange('email')}
                       value={values.email}
                       addStyle={{width: wp(60)}}
+                      autocapitalize={true}
                     />
                     <RNPickerSelect
                       onValueChange={value => (values.arroba = value)}
@@ -253,13 +255,14 @@ const styles = StyleSheet.create({
 const customPickerStyles = StyleSheet.create({
   inputIOS: {
     fontSize: 14,
-    paddingVertical: 10,
-    paddingHorizontal: 12,
-    borderWidth: 1,
-    borderColor: 'green',
+    //paddingVertical: 10,
+    //paddingHorizontal: 12,
+    borderBottomWidth: 1,
+    borderColor: '#BDBDBD',
     borderRadius: 8,
     color: 'black',
     paddingRight: 30, // to ensure the text is never behind the icon
+    marginTop: wp(11),
   },
   inputAndroid: {
     fontSize: 14,
