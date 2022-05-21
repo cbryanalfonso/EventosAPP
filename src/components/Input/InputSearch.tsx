@@ -34,7 +34,7 @@ const InputSearchIcon = ({placeholder,onChangeText,onBlur,value,addStyle,autocap
         secureTextEntry={security ? true : false}
         autoCapitalize={autocapitalize ? 'none' : 'words'}
       />
-      <Icon name='magnet' color={"#828282"} size={wp(4)}/>
+      <Icon name='pencil' color={"#828282"} size={wp(4)}/>
     </View>
   );
 };
