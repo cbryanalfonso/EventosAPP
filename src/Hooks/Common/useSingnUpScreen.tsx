@@ -41,7 +41,7 @@ export const useSingnUpScreen = () => {
                 .ref(`/Usuarios/${user.uid}`)
                 .set({
                   name: name,
-                  email: email,
+                  email: correoCompleto,
                   password: password,
                   uid: user.uid,
                 })
