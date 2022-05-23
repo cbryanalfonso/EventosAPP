@@ -39,6 +39,13 @@ const getTextStyle = (color: any) => {
         color:'#E7515B',
         fontSize: wp(4.2),
       }
+    case 'txtWhite':{
+      return{
+        color: 'white',
+        fontSize: wp(3.5),
+        fontWeight: '400',
+      }
+    }
     default:
       return {
         color: '#FFFFFF',
