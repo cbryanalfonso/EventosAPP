@@ -12,6 +12,7 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 import {ProfileImage} from '../../components/Images/ProfileImage';
 import { TextUi } from '../../components/Text/TextUi';
 import {useProfile} from '../../Hooks/Profile/useProfile';
+import ButtonProfile from '../../components/Button/ButtonProfile';
 
 export const HomeProfile = () => {
   const {imagen, openCameraPhoto} = useProfile();
@@ -27,6 +28,7 @@ export const HomeProfile = () => {
           </View>
         )}
         <TouchableOpacity
+        onPress={()=>{openCameraPhoto()}}
           style={[
             styles.btnEdit,
             {backgroundColor: imagen ? 'white' : '#E8505B'},
@@ -52,7 +54,13 @@ export const HomeProfile = () => {
           <TextUi texto='20' color='txtWhite' addStyle={{fontSize: wp(4), fontWeight: '600'}} />
         </View>
       </View>
-      <View style={styles.containerInformation}></View>
+      <View style={styles.containerInformation}>
+        <ButtonProfile nameIcon='user' text='My Profile' />
+        <ButtonProfile nameIcon='info' text='About us' />
+        <ButtonProfile nameIcon='file' text='Privacy Policy' />
+        <ButtonProfile nameIcon='file' text='Terms & Conditions' />
+        
+      </View>
     </SafeAreaView>
   );
 };
@@ -69,6 +77,8 @@ const styles = StyleSheet.create({
   },
   containerInformation: {
     flex: 4,
+    marginTop: wp(15),
+    alignItems: 'center'
   },
   photoUser: {
     width: wp(92),
