@@ -22,7 +22,6 @@ target 'eventos' do
 
 
 
-  pod 'react-native-safe-area-context', :path => '../node_modules/react-native-safe-area-context'
 
   target 'eventosTests' do
     inherit! :complete
