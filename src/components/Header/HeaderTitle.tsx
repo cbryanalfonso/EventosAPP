@@ -18,16 +18,11 @@ const HeaderTitle = ({texto}: Props) => {
 const styles = StyleSheet.create({
     fondo:{
         backgroundColor: 'transparent',
-        width : wp(34),
-        height: 60,
-        marginLeft: wp(-3),
-        //flexDirection: "row",
+        height: wp(11),
         justifyContent:"center",
         alignItems: 'center'
     },
     textCenter:{
-        //marginTop: wp(2),
-       // marginLeft: wp(11), 
         fontSize: wp(4.6),
         fontWeight:'bold',
         textAlign: 'center',
