@@ -11,10 +11,12 @@ import {HomeCalendars} from './HomeCalendars/HomeCalendars';
 import {HomeNewEvents} from './HomeNewEvents/HomeNewEvents';
 import {HomeHistory} from './EventsHistory/HomeHistory';
 import {HomeProfile} from './Profile/HomeProfile';
+import { type } from 'os';
 
 interface Props {
   name: string;
 }
+
 
 const Tab = createBottomTabNavigator();
 
@@ -70,24 +72,15 @@ export const AppBottomNavigator = () => {
             backgroundColor: 'white',
           },
           headerLeft: props => (
-            <View style={{width: wp(33)}}>
-              <HeaderLogoLeft />
+            <View style={{marginLeft: wp(2)}}>
+              <HeaderLogoLeft/>
             </View>
           ),
           headerTitle: props => (
-            <View style={{width: wp(30), justifyContent: 'center'}}>
               <HeaderTitle texto="Home" />
-            </View>
           ),
           headerRight: props => (
-            <View
-              style={{
-                width: wp(23),
-                justifyContent: 'center',
-                alignItems: 'center',
-              }}>
-              <ButtonNotificationHeader />
-            </View>
+                <ButtonNotificationHeader />
           ),
           headerTransparent: false,
         })}
@@ -101,24 +94,15 @@ export const AppBottomNavigator = () => {
             backgroundColor: 'white',
           },
           headerLeft: props => (
-            <View style={{width: wp(33)}}>
-              <HeaderLogoLeft />
+            <View style={{marginLeft: wp(2)}}>
+              <HeaderLogoLeft/>
             </View>
           ),
           headerTitle: props => (
-            <View style={{width: wp(30), justifyContent: 'center'}}>
               <HeaderTitle texto="Event History" />
-            </View>
           ),
           headerRight: props => (
-            <View
-              style={{
-                width: wp(23),
-                justifyContent: 'center',
-                alignItems: 'center',
-              }}>
-              <ButtonNotificationHeader />
-            </View>
+                <ButtonNotificationHeader />
           ),
           headerTransparent: false,
         })}
@@ -132,24 +116,15 @@ export const AppBottomNavigator = () => {
             backgroundColor: 'white',
           },
           headerLeft: props => (
-            <View style={{width: wp(33)}}>
-              <HeaderLogoLeft />
+            <View style={{marginLeft: wp(2)}}>
+              <HeaderLogoLeft/>
             </View>
           ),
           headerTitle: props => (
-            <View style={{width: wp(30), justifyContent: 'center'}}>
               <HeaderTitle texto="Create Event" />
-            </View>
           ),
           headerRight: props => (
-            <View
-              style={{
-                width: wp(23),
-                justifyContent: 'center',
-                alignItems: 'center',
-              }}>
-              <ButtonNotificationHeader />
-            </View>
+                <ButtonNotificationHeader />
           ),
           headerTransparent: false,
         })}
@@ -163,24 +138,15 @@ export const AppBottomNavigator = () => {
             backgroundColor: 'white',
           },
           headerLeft: props => (
-            <View style={{width: wp(33)}}>
-              <HeaderLogoLeft />
+            <View style={{marginLeft: wp(2)}}>
+              <HeaderLogoLeft/>
             </View>
           ),
           headerTitle: props => (
-            <View style={{width: wp(30), justifyContent: 'center'}}>
               <HeaderTitle texto="Event Report" />
-            </View>
           ),
           headerRight: props => (
-            <View
-              style={{
-                width: wp(23),
-                justifyContent: 'center',
-                alignItems: 'center',
-              }}>
-              <ButtonNotificationHeader />
-            </View>
+                <ButtonNotificationHeader />
           ),
           headerTransparent: false,
         })}
@@ -194,24 +160,15 @@ export const AppBottomNavigator = () => {
             backgroundColor: 'white',
           },
           headerLeft: props => (
-            <View style={{width: wp(33)}}>
-              <HeaderLogoLeft />
+            <View style={{marginLeft: wp(2)}}>
+              <HeaderLogoLeft/>
             </View>
           ),
           headerTitle: props => (
-            <View style={{width: wp(30), justifyContent: 'center'}}>
-              <HeaderTitle texto="My Profile" />
-            </View>
+              <HeaderTitle texto="My profile" />
           ),
           headerRight: props => (
-            <View
-              style={{
-                width: wp(23),
-                justifyContent: 'center',
-                alignItems: 'center',
-              }}>
-              <ButtonNotificationHeader />
-            </View>
+                <ButtonNotificationHeader />
           ),
           headerTransparent: false,
         })}
