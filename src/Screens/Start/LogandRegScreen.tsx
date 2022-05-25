@@ -53,7 +53,7 @@ export const LogandRegScreen = () => {
                 style="btnTransparenteRojo"
                 Texto="Log in"
                 addStyle={[styles.addStyleBtn, {marginBottom: 0}]}
-                onPress={() => navigation.navigate('LoginScreen')}
+                onPress={() => navigation.navigate('LoginScreeen')}
               />
             </View>
           </View>
