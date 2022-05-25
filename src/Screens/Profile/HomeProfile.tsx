@@ -31,12 +31,12 @@ export const HomeProfile = () => {
         onPress={()=>{openCameraPhoto()}}
           style={[
             styles.btnEdit,
-            {backgroundColor: imagen ? 'white' : '#E8505B'},
+            {backgroundColor: imagen ? '#E8505B' : 'white'},
           ]}>
           <Icon
             name="pencil"
             size={wp(3.5)}
-            color={imagen ? '#E8505B' : 'white'}
+            color={imagen ? 'white' : '#E8505B'}
           />
         </TouchableOpacity>
       </View>
@@ -69,6 +69,7 @@ const styles = StyleSheet.create({
   containerHome: {
     flex: 1,
     marginHorizontal: wp(2),
+    marginVertical: wp(4)
   },
   containerImage: {
     flex: 2,
@@ -96,7 +97,7 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     position: 'absolute',
     right: wp(6),
-    top: wp(7),
+    top: wp(5),
   },
   informationEvents: {
     width: wp(87),
