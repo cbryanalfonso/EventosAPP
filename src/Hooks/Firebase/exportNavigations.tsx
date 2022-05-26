@@ -9,6 +9,7 @@ export type RootStackParamListAuth = {
   Notifications: undefined;
   AppBottom: undefined;
   HomeEvents: undefined;
+  CreateNewEvent: undefined;
 };
 
 
