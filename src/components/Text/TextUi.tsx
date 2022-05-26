@@ -46,6 +46,21 @@ const getTextStyle = (color: any) => {
         fontWeight: '400',
       }
     }
+    case 'txtNormalBold':{
+      return{
+        color:'#4F4F4F',
+        fontSize: wp(4.4),
+        fontWeight: 'bold',
+    }
+    }
+
+    case 'txtPequeno':{
+      return{
+        color: '#828282',
+        fontSize: wp(3),
+        fontWeight: '500',
+      }
+    }
     default:
       return {
         color: '#FFFFFF',
